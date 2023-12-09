@@ -73,8 +73,28 @@
                     </div>
                 </div>
             </div>
-            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i
-                    class="fa fa-arrow-right ms-3"></i></a>
+            @if (!auth()->check())
+                <a href="{{ route('login') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Login<i
+                        class="fa fa-arrow-right ms-3"></i></a>
+            @else
+                <div class="nav-item dropdown">
+                    <div class="nav-link dropdown-toggle" data-bs-toggle="dropdown"">
+                        {{-- <a href="#">Profile Picture</a> --}}
+                        <img src="{{ asset('storage/' . auth()->user()->image_path) }}" class="rounded-circle"
+                            alt="" height="30px">
+                        <span class="ms-1">{{ auth()->user()->name }}</span>
+                    </div>
+
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <input type="submit" class="dropdown-item" value="Logout">
+                        </form>
+                        {{-- <a href="404.html" class="dropdown-item">404 Page</a> --}}
+                    </div>
+                </div>
+            @endif
         </div>
     </nav>
     <!-- Navbar End -->

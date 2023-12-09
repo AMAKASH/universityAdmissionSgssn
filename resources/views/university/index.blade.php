@@ -21,7 +21,7 @@
                     <x-university-card :university="$university" />
                 @endforeach
                 @if (count($universities) == 0)
-                    <div>
+                    <div style="height: 50vh">
                         <h3 class="text-center mt-5">No Universities Available Matching your criteria</h3>
                     </div>
                 @endif

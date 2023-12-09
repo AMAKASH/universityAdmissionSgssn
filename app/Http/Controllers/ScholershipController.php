@@ -57,4 +57,12 @@ class ScholershipController extends Controller
 
         return $filtered_scholerships;
     }
+
+    public function show(Scholership $scholership)
+    {
+        return view('scholership.show', [
+            "scholership" => $scholership,
+
+        ]);
+    }
 }

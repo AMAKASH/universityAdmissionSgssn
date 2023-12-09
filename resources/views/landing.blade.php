@@ -23,9 +23,11 @@
                                 <p class="fs-5 text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed
                                     stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea sanctus
                                     eirmod elitr.</p>
-                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Learn
+                                <a href="{{ route('university-list') }}"
+                                    class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Learn
                                     More</a>
-                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join
+                                <a href="{{ route('register') }}"
+                                    class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join
                                     Now</a>
                             </div>
                         </div>
@@ -47,9 +49,11 @@
                                 <p class="fs-5 text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed
                                     stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea sanctus
                                     eirmod elitr.</p>
-                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Learn
+                                <a href="{{ route('scholership-list') }}"
+                                    class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Learn
                                     More</a>
-                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join
+                                <a href="{{ route('register') }}"
+                                    class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join
                                     Now</a>
                             </div>
                         </div>

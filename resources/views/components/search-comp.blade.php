@@ -54,19 +54,19 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function search_button_click() {
-            //console.log("url")
-            let phrase_input = document.getElementById('search-phrase');
-            let crit = document.getElementById('search-criteria');
-            let phrase = phrase_input.value.replace(" ", "_");
-            if (phrase == "") {
-                return;
-            }
-
-            let url = location.protocol + '//' + location.host + location.pathname +
-                `?search=${phrase}&criteria=${crit.value}`;
-            window.location.href = url;
+</div>
+<script>
+    function search_button_click() {
+        //console.log("url")
+        let phrase_input = document.getElementById('search-phrase');
+        let crit = document.getElementById('search-criteria');
+        let phrase = phrase_input.value.replace(" ", "_");
+        if (phrase == "") {
+            return;
         }
-    </script>
+
+        let url = location.protocol + '//' + location.host + location.pathname +
+            `?search=${phrase}&criteria=${crit.value}`;
+        window.location.href = url;
+    }
+</script>

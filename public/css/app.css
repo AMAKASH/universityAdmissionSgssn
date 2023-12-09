@@ -135,3 +135,16 @@ section {
 .rounded {
     border-radius: 0.25rem !important;
 }
+
+.ripple-surface {
+    min-width: inherit !important;
+    /* Add any other styles to reset or modify the effect */
+}
+
+.ripple-wave {
+    min-width: inherit !important;
+}
+
+.ripple-wave:active {
+    min-width: inherit !important;
+}

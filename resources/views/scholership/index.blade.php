@@ -22,7 +22,7 @@
                     <x-scholership-card :scholership="$scholership" />
                 @endforeach
                 @if (count($scholerships) == 0)
-                    <div>
+                    <div style="height: 50vh">
                         <h3 class="text-center mt-5">No Scholerships Available Matching your criteria</h3>
                     </div>
                 @endif

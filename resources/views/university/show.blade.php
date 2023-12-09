@@ -16,7 +16,7 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-6 mb-4 mb-lg-0">
                                     <img src="{{ asset('img/university/' . $university->image_path) }}" alt="..."
-                                        width="600px">
+                                        style="width:60vw;max-width:600px">
                                     <a class="btn btn-primary d-lg-block col-lg-5 col-md-5 mt-3 py-3 px-3 mb-1-9 rounded"
                                         href="{{ route('university-list') }}">Apply Now</a>
                                 </div>
@@ -111,9 +111,9 @@
                             <div class="mt-3">
                                 <span class="section-title text-primary mb-3 mb-sm-4">Map Location</span>
                                 <div>
-                                    <iframe title="Map Location" src="{{ $university->map_url }}" width="800"
-                                        height="600" style="border:0;" allowfullscreen="true" loading="lazy"
-                                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    <iframe title="Map Location" src="{{ $university->map_url }}"
+                                        style="border:0;width:80vw;height:30rem;max-width:850px" allowfullscreen="true"
+                                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                 </div>
 
 

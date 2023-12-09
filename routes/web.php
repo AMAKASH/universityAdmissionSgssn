@@ -40,3 +40,13 @@ Route::middleware('web')->group(function () {
     Route::get('/scholerships', [ScholershipController::class, 'index'])->name('scholership-list');
     Route::get('/scholerships/{scholership}', [ScholershipController::class, 'show'])->name('scholership.show');
 });
+
+Route::middleware(['auth', 'web'])->group(function () {
+    Route::get('/dashboard', [BaseController::class, 'dashboard'])->name('dashboard');
+    Route::patch('/dashboard', [BaseController::class, 'update_info']);
+    Route::get('/verifyemail', [BaseController::class, 'emailverify_create'])->name('email.verify');
+    Route::get('/password-reset', [BaseController::class, 'reset_user_password_show'])->name('user.password.reset');
+    Route::post('/password-reset', [BaseController::class, 'reset_user_password_commit']);
+    Route::post('/verifyemail', [BaseController::class, 'emailverify_confirm']);
+    Route::patch('/upload_img', [BaseController::class, 'upload_image'])->name('upload-image');
+});

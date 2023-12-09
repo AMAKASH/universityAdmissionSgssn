@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -20,7 +21,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        return view('auth.register2');
     }
 
     /**
@@ -30,11 +31,26 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+
+
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'g-recaptcha-response' => ['required']
         ]);
+
+        $g_captch_response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            "secret" => "6Lfi9SspAAAAAK0KIeYCA1DbO5U5PR0ZrQdBItLF",
+            "response" => $request['g-recaptcha-response'],
+        ])->json();
+
+        if (!$g_captch_response['success']) {
+            return back()->withErrors(['human-verifiy' => "Human Verification Error: " . $g_captch_response['error-codes'][0]]);
+        }
+
+        //dd($g_captch_response);
 
         $user = User::create([
             'name' => $request->name,
