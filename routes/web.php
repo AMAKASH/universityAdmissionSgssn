@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BaseController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ScholershipController;
 use App\Http\Controllers\UniApplicationController;
 use App\Http\Controllers\UniversityController;
@@ -59,4 +61,16 @@ Route::middleware(['auth', 'web'])->group(function () {
     Route::get('scholership/track/{scholership}', [ScholershipController::class, 'track'])->name('scholership.track');
     Route::get('scholership/untrack/{scholership}', [ScholershipController::class, 'untrack'])
         ->name('scholership.untrack');
+
+    Route::get('profile/{user}', [BaseController::class, 'view_profile'])->name('profile.show');
+
+
+    Route::get('blogs/discussions', [BlogController::class, 'discussion_index'])->name('discussion.index');
+    Route::get('blogs/discussions/{blog}', [BlogController::class, 'discussion_show'])->name('discussion.show');
+    Route::get('blogs/discussions/{blog}/delete', [BlogController::class, 'discussion_delete'])
+        ->name('discussion.delete');
+    Route::post('blogs/discussions', [BlogController::class, 'discussion_create'])->name('discussion.create');
+
+    Route::post('comments/', [CommentController::class, 'add_comment'])->name('comment-add');
+    Route::get('comments/delete/{comment}', [CommentController::class, 'delete_comment'])->name('comment-delete');
 });

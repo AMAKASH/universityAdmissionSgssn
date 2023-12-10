@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\Scholership;
 use Illuminate\Http\Request;
 use App\Models\University;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
@@ -120,5 +121,10 @@ class BaseController extends Controller
         $universities = University::all();
 
         return view('cost-calculate', ['universities' => $universities]);
+    }
+
+    public function view_profile(User $user)
+    {
+        return view('profile.show', ['user' => $user]);
     }
 }

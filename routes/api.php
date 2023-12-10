@@ -20,6 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('web')->group(function () {
-    Route::get('/get-majors-by-university/{university}', [UniversityMajorController::class, 'get_majors_by_university'])->name('api.majors.university');
-    Route::get('/get-data-by-major/{major}', [UniversityMajorController::class, 'get_data_by_major'])->name('api.data.major');
+    Route::get('/get-majors-by-university/{university}', [UniversityMajorController::class, 'get_majors_by_university'])
+        ->name('api.majors.university');
+    Route::get('/get-data-by-major/{major}', [UniversityMajorController::class, 'get_data_by_major'])
+        ->name('api.data.major');
 });

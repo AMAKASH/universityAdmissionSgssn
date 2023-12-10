@@ -17,8 +17,8 @@
                             <div class="row align-items-center">
 
                                 <div class="col-lg-6 mb-4 mb-lg-0">
-                                    <img src="{{ asset('storage/' . $user->image_path) }}" alt="..."
-                                        style="width:60vw;max-width:600px">
+                                    <img src="{{ asset('storage/' . $user->image_path) }}" alt="..." class="mx-auto"
+                                        style="width:40vw;max-width:400px;">
 
                                     <div class="row">
                                         <form action="{{ route('upload-image') }}" method="POST" id="img-upload-form"
@@ -31,9 +31,12 @@
                                             <input type="file" id="img-upload" name="img" class="d-none"
                                                 accept="image/jpeg,image/png,image/jpg">
                                         </form>
-                                        <a href="{{ route('user.password.reset') }}"
-                                            class="btn btn-primary d-lg-block col-lg-5 col-md-5 mt-3 py-3 px-2 mb-1-9 rounded">Reset
-                                            Password</a>
+                                        <div>
+                                            <a href="{{ route('user.password.reset') }}"
+                                                class="btn btn-primary d-lg-block col-lg-5 col-md-5 mt-3 py-3 px-2 mb-1-9 rounded">Reset
+                                                Password</a>
+                                        </div>
+
                                     </div>
 
                                 </div>

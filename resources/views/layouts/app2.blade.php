@@ -67,7 +67,7 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Blogs</a>
                     <div class="dropdown-menu fade-down m-0">
-                        <a href="" class="dropdown-item">Discussion Forum</a>
+                        <a href="{{ route('discussion.index') }}" class="dropdown-item">Discussion Forum</a>
                         <a href="" class="dropdown-item">User Posts</a>
                         {{-- <a href="404.html" class="dropdown-item">404 Page</a> --}}
                     </div>
@@ -155,7 +155,8 @@
                                 alt="">
                         </div>
                         <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
+                            <img class="img-fluid bg-light p-1" src="{{ asset('img/course-1.jpg') }}"
+                                alt="">
                         </div>
                     </div>
                 </div>
