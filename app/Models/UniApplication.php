@@ -19,4 +19,10 @@ class UniApplication extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function university_major()
+    {
+        return $this->belongsTo(UniversityMajor::class, 'university_major_id', 'id', 'university_majors');
+        //dd($major->university_major);
+    }
 }

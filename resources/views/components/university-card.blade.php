@@ -9,8 +9,9 @@
                  <a href="{{ route('university.show', $university->id) }}"
                      class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end"
                      style="border-radius: 30px 0 0 30px;">Read More</a>
-                 <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3"
-                     style="border-radius: 0 30px 30px 0;">Apply Now</a>
+                 <a href="{{ route('application.create', $university->id) }}"
+                     class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Apply
+                     Now</a>
              </div>
          </div>
          <div class="text-center p-4 pb-0">

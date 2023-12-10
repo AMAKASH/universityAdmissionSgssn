@@ -5,6 +5,7 @@
 @endsection
 
 @section('styles')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 @endsection
 @section('content')
     <section class="bg-light">
@@ -187,17 +188,107 @@
 
                     </div>
                 </div>
+                <div class="col-lg-12 mb-4 mb-sm-5">
+                    <div>
+                        <span class="section-title text-primary mb-3 mb-sm-4">Applications</span>
+                        <table id="applications" class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">University</th>
+                                    <th scope="col">Major</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Admission Decision</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($user->applications as $uniapplication)
+                                    <tr>
+                                        <th scope="col">{{ $loop->index + 1 }}</th>
+                                        <td>{{ $uniapplication->university->name }}</td>
+                                        <td>{{ $uniapplication->university_major->major->name }}</td>
+                                        <td>{{ $uniapplication->status }}</td>
+                                        <td>{{ $uniapplication->admission_decision }}</td>
+                                        <td><a href="{{ route('application.destroy', $uniapplication->id) }}"
+                                                class="btn btn-danger rounded">Delete</a></td>
+                                    </tr>
+                                @endforeach
+                                @if (count($user->applications) == 0)
+                                    <tr>
+                                        <td colspan='6'>
+                                            <h6 class="text-center">No Application submitted yet</h6>
+                                        </td>
+                                    </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                    <button class="btn btn-secondary" onclick="javascript:exportFromHTML()">Export Applications</button>
+                </div>
+
+                <div class="col-lg-12 mb-4 mb-sm-5">
+                    <div>
+                        <span class="section-title text-primary mb-3 mb-sm-4">Scholerships</span>
+                        <table id="scholerships" class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">University</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Award</th>
+                                    <th scope="col">Deadline</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($user->scholerships as $user_scholership)
+                                    <tr>
+                                        <th scope="col">{{ $loop->index + 1 }}</th>
+                                        <td>{{ $user_scholership->university->name }}</td>
+                                        <td><a
+                                                href="{{ route('scholership.show', $user_scholership->id) }}">{{ $user_scholership->name }}</a>
+                                        </td>
+                                        <td>{{ $user_scholership->award }}</td>
+                                        <td>{{ $user_scholership->deadline }}</td>
+                                        <td><a href="{{ route('scholership.untrack', $user_scholership->id) }}"
+                                                class="btn btn-danger rounded">Untrack</a></td>
+                                    </tr>
+                                @endforeach
+                                @if (count($user->scholerships) == 0)
+                                    <tr>
+                                        <td colspan='6'>
+                                            <h6 class="text-center">No Scholerships are being tracked yet</h6>
+                                        </td>
+                                    </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
             </div>
     </section>
 @endsection
 @section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.19/jspdf.plugin.autotable.min.js"></script>
     <script>
         let input_img = document.getElementById('img-upload');
         let form = document.getElementById('img-upload-form');
 
         input_img.onchange = function() {
             form.submit();
+        }
+
+        function exportFromHTML() {
+            window.jsPDF = window.jspdf.jsPDF;
+            var doc = new jsPDF();
+            doc.text("Applications | University Admission Suggestion", 50, 10);
+            doc.autoTable({
+                html: '#applications',
+
+            });
+            doc.save('UAS_application_{{ $user->name }}.pdf');
         }
     </script>
 @endsection

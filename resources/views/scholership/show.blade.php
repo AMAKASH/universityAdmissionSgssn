@@ -35,6 +35,8 @@
 
                                     </ul>
 
+                                    <a class="btn btn-primary d-lg-block col-lg-5 col-md-5 mt-3 py-3 px-3 mb-1-9 rounded"
+                                        href="{{ route('scholership.track', $scholership->id) }}">Track</a>
                                 </div>
                             </div>
                         </div>

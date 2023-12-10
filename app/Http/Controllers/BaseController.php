@@ -114,4 +114,11 @@ class BaseController extends Controller
         $user->save();
         return redirect()->route('dashboard')->with('success-msg', 'Password Updated successfully');
     }
+
+    public function cost_calculate()
+    {
+        $universities = University::all();
+
+        return view('cost-calculate', ['universities' => $universities]);
+    }
 }

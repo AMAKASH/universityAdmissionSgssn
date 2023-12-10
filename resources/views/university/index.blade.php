@@ -13,9 +13,7 @@
                 <h6 class="section-title bg-white text-center text-primary px-3">Universities</h6>
                 <h1 class="mb-5">All Universities</h1>
             </div>
-            <div>
 
-            </div>
             <div class="row g-4 justify-content-center">
                 @foreach ($universities as $university)
                     <x-university-card :university="$university" />

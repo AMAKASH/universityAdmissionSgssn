@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Scholership;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ScholershipController extends Controller
 {
@@ -64,5 +65,24 @@ class ScholershipController extends Controller
             "scholership" => $scholership,
 
         ]);
+    }
+
+    public function track(Scholership $scholership)
+    {
+        $user = auth()->user();
+        foreach ($user->scholerships as $user_scholership) {
+            if ($user_scholership->id == $scholership->id) {
+                return redirect()->route('dashboard')->with('success-msg', 'Scholership is already tracked');
+            }
+        }
+        $user->scholerships()->attach($scholership->id);
+        return redirect()->route('dashboard')->with('success-msg', 'Scholership is being tracked');
+    }
+
+    public function untrack(Scholership $scholership)
+    {
+        $user = auth()->user();
+        $user->scholerships()->detach($scholership->id);
+        return redirect()->route('dashboard')->with('success-msg', 'Scholership untracked');
     }
 }

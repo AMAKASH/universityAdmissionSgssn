@@ -18,7 +18,7 @@
                                     <img src="{{ asset('img/university/' . $university->image_path) }}" alt="..."
                                         style="width:60vw;max-width:600px">
                                     <a class="btn btn-primary d-lg-block col-lg-5 col-md-5 mt-3 py-3 px-3 mb-1-9 rounded"
-                                        href="{{ route('university-list') }}">Apply Now</a>
+                                        href="{{ route('application.create', $university->id) }}">Apply Now</a>
                                 </div>
                                 <div class="col-lg-6 px-xl-10">
                                     <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 rounded mb-1-9">

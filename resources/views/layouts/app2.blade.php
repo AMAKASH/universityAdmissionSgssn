@@ -63,7 +63,7 @@
                 <a href="{{ route('landing') }}" class="nav-item nav-link active">Home</a>
                 <a href="{{ route('university-list') }}" class="nav-item nav-link">Universities</a>
                 <a href="{{ route('scholership-list') }}" class="nav-item nav-link">Scholerships</a>
-                <a href="" class="nav-item nav-link">Cost Calculator</a>
+                <a href="{{ route('cost-calculate') }}" class="nav-item nav-link">Cost Calculator</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Blogs</a>
                     <div class="dropdown-menu fade-down m-0">
@@ -135,19 +135,24 @@
                     <h4 class="text-white mb-3">Gallery</h4>
                     <div class="row g-2 pt-2">
                         <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
+                            <img class="img-fluid bg-light p-1" src="{{ asset('img/course-1.jpg') }}"
+                                alt="">
                         </div>
                         <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
+                            <img class="img-fluid bg-light p-1" src="{{ asset('img/course-2.jpg') }}"
+                                alt="">
                         </div>
                         <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
+                            <img class="img-fluid bg-light p-1" src="{{ asset('img/course-3.jpg') }}"
+                                alt="">
                         </div>
                         <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
+                            <img class="img-fluid bg-light p-1" src="{{ asset('img/course-2.jpg') }}"
+                                alt="">
                         </div>
                         <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
+                            <img class="img-fluid bg-light p-1" src="{{ asset('img/course-3.jpg') }}"
+                                alt="">
                         </div>
                         <div class="col-4">
                             <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UniversityMajorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::middleware('web')->group(function () {
+    Route::get('/get-majors-by-university/{university}', [UniversityMajorController::class, 'get_majors_by_university'])->name('api.majors.university');
+    Route::get('/get-data-by-major/{major}', [UniversityMajorController::class, 'get_data_by_major'])->name('api.data.major');
 });

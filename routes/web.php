@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\ScholershipController;
+use App\Http\Controllers\UniApplicationController;
 use App\Http\Controllers\UniversityController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,7 @@ Route::middleware('web')->group(function () {
 
     Route::get('/scholerships', [ScholershipController::class, 'index'])->name('scholership-list');
     Route::get('/scholerships/{scholership}', [ScholershipController::class, 'show'])->name('scholership.show');
+    Route::get('/calculate-cost', [BaseController::class, 'cost_calculate'])->name('cost-calculate');
 });
 
 Route::middleware(['auth', 'web'])->group(function () {
@@ -49,4 +51,12 @@ Route::middleware(['auth', 'web'])->group(function () {
     Route::post('/password-reset', [BaseController::class, 'reset_user_password_commit']);
     Route::post('/verifyemail', [BaseController::class, 'emailverify_confirm']);
     Route::patch('/upload_img', [BaseController::class, 'upload_image'])->name('upload-image');
+    Route::get('application/{university}', [UniApplicationController::class, 'create'])->name('application.create');
+    Route::post('application/{university}', [UniApplicationController::class, 'store']);
+    Route::get('application/{application}/delete', [UniApplicationController::class, 'destroy'])
+        ->name('application.destroy');
+
+    Route::get('scholership/track/{scholership}', [ScholershipController::class, 'track'])->name('scholership.track');
+    Route::get('scholership/untrack/{scholership}', [ScholershipController::class, 'untrack'])
+        ->name('scholership.untrack');
 });

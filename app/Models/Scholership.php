@@ -14,4 +14,9 @@ class Scholership extends Model
     {
         return $this->belongsTo(University::class);
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
